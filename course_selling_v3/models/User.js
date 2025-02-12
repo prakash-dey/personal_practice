@@ -16,7 +16,6 @@ const userSchema = new mongoose.Schema({
         unique: true,
         trim : true,
         lowercase: true,
-
     },
     password: {
         type: String,
@@ -40,7 +39,8 @@ userSchema.pre("save", async function(next){
 });
 
 userSchema.methods.validatePassword = async function(password){
-    return await bcrypt.compare(password,this.password);
+    const user = await this.model('User').findOne({ email: this.email }).select('+password');
+    return await bcrypt.compare(password, user.password);
 }
 
 userSchema.methods.getJwtSigned = function() {

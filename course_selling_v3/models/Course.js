@@ -72,6 +72,7 @@ const courseSchema = new mongoose.Schema(
       type: Number,
       min: [0, "Rating must be at least 0"],
       max: [5, "Rating cannot be more than 5"],
+      default: 0
     },
   },
   { timestamps: true }

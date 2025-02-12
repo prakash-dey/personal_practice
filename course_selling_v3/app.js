@@ -8,6 +8,7 @@ dotenv.config();
 
 import authRoutes from './routes/authRouter.js';
 import errorHandler from './middlewares/errorHandler.js';
+import courseRouter from './routes/courseRoutes.js';
 
 app.use(express.json());
 app.use(cookieParser());
@@ -20,6 +21,7 @@ const limiter = rateLimit({
 app.use(limiter);
 
 app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/course', courseRouter);
 
 
 app.use(errorHandler);
