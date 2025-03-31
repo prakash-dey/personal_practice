@@ -3,6 +3,7 @@ import connectDB from "./config/db";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import userRouter from "./routes/userRoutes";
+import contentRouter from "./routes/contentRoutes";
 import errorHandler from "./middlewares/errorMiddleware";
 dotenv.config();
 
@@ -14,12 +15,14 @@ app.use(cookieParser());
 
 console.log("Index.ts called");
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/content", contentRouter);
 app.get("/api/v1/test", (req, res) => {
   res.status(200).json({
     success: true,
     message: "Test API is working",
   });
 });
+
 
 app.use(errorHandler);
 connectDB()

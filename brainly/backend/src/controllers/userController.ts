@@ -18,6 +18,7 @@ const sendTokenResponse = async function (
   };
   res.status(statusCode).cookie("token",token,options).json({success:true,token})
 };
+
 export const signup = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
     const { name, email, password } = req.body;
@@ -65,3 +66,4 @@ export const signin = asyncHandler(
     sendTokenResponse(user,200,res);
   }
 );
+
