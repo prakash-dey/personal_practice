@@ -1,7 +1,7 @@
 import ts from "typescript";
 
 class ErrorResponse extends Error {
-    constructor(message : string, statusCode:number, error:Error) {
+    constructor(message : string, statusCode:number) {
       super(message);
     //   @ts-ignore
     this.statusCode = statusCode;

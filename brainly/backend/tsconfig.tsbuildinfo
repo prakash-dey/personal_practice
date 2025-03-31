@@ -1,1 +1,1 @@
-{"root":["./src/index.ts","./src/config/db.ts","./src/utils/asynchandler.ts","./src/utils/errorresponse.ts"],"version":"5.8.2"}
+{"root":["./src/index.ts","./src/config/db.ts","./src/controllers/usercontroller.ts","./src/middlewares/errormiddleware.ts","./src/model/usermodel.ts","./src/routes/userroutes.ts","./src/utils/asynchandler.ts","./src/utils/errorresponse.ts","./src/utils/validator.ts"],"version":"5.8.2"}
