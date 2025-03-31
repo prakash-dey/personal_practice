@@ -42,7 +42,7 @@ userSchema.methods.toJSON = function() {
     delete userObject.password;
     return userObject;
 }
-userSchema.methods.generateJwtToken = function() {
+userSchema.methods.generateJwtToken = function() { 
     return jwt.sign({_id:this._id}, process.env.JWT_SECRET as string, {
         expiresIn: "1d"
     });
