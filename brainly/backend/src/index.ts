@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import userRouter from "./routes/userRoutes";
 import contentRouter from "./routes/contentRoutes";
 import errorHandler from "./middlewares/errorMiddleware";
+import shareRouter from "./routes/shareRoutes";
 dotenv.config();
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(cookieParser());
 console.log("Index.ts called");
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/content", contentRouter);
+app.use("/api/v1/share", shareRouter);
 app.get("/api/v1/test", (req, res) => {
   res.status(200).json({
     success: true,
