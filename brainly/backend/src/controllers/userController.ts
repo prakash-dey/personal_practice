@@ -57,7 +57,7 @@ export const signin = asyncHandler(
     }
     // Get the user
     const user = await UserModel.findOne({ email });
-    if (!user) return next(new ErrorResponse("User does not exists", 400));
+    if (!user) return next(new ErrorResponse("User does not exists", 403));
     // check if password is correct
     const isPasswordValid = await (user as any).comparePassword(password);
     if(!isPasswordValid){

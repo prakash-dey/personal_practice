@@ -6,6 +6,8 @@ import userRouter from "./routes/userRoutes";
 import contentRouter from "./routes/contentRoutes";
 import errorHandler from "./middlewares/errorMiddleware";
 import shareRouter from "./routes/shareRoutes";
+import cors from "cors";
+
 dotenv.config();
 
 const app = express();
@@ -13,6 +15,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
 
 console.log("Index.ts called");
 app.use("/api/v1/user", userRouter);
