@@ -1,37 +1,27 @@
 import { ReactElement } from "react";
 
 interface ButtonProps {
-    title : string;
-    size : "lg" | "md" | "sm";
-    color : "primary" | "secondary" | "danger" | "success";
-    startIcon? : ReactElement;
-    endIcon? : ReactElement;
-    onClick? : () => void;
-    disabled? : boolean;
+    variant: "primary" | "secondary";
+    text: string;
+    startIcon?: ReactElement;
+    onClick?: () => void;
+    fullWidth?: boolean;
+    loading?: boolean;
 }
 
-const sizeStyles = {
-    "lg" : "px-8 py-4 text-xl rounded-xl",
-    "md" : "px-6 py-3 text-lg rounded-lg",
-    "sm" : "px-4 py-2 text-base rounded-md",
-}
+const variantClasses = {
+    "primary": "bg-purple-600 text-white",
+    "secondary": "bg-purple-200 text-purple-600",
+};
 
-const colorStyles = {
-    "primary" : "bg-purple-500 text-white hover:bg-purple-600", 
-    "secondary" : "bg-purple-400 text-white hover:bg-purple-500",
-    "danger" : "bg-red-500 text-white hover:bg-red-600",
-    "success" : "bg-green-500 text-white hover:bg-green-600",
-}
+const defaultStyles = "px-4 py-2 rounded-md font-light flex items-center";
 
-export function Button(props: ButtonProps) {
 
-    return <button className={sizeStyles[props.size] + " " + colorStyles[props.color]}>
-        <div className="flex items-center">
-            {props.startIcon}
-            <div className="pl-2 pr-2">
-                {props.title}
-            </div>
-            {props.endIcon}
+export function Button({variant, text, startIcon, onClick, fullWidth, loading}: ButtonProps) {
+    return <button onClick={onClick} className={variantClasses[variant] + " " + defaultStyles + `${fullWidth ? " w-full flex justify-center items-center" : ""} ${loading ? "opacity-45	" : ""}`} disabled={loading}>
+        <div className="pr-2">
+            {startIcon}
         </div>
+        {text}
     </button>
 }

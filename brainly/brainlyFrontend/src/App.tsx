@@ -1,13 +1,18 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import { Button } from './components/Button'
+import { Signin } from './pages/Signin'
+import Dashboard from './pages/Dashboard'
+import { Signup } from './pages/Signup'
 
 function App() {
 
-  return (
-    <>
-     <Button title='Click Me' size='sm' color='secondary' />
-    </>
-  )
+  return <BrowserRouter>
+  <Routes>
+    <Route path='signin' element = {<Signin/>}/>
+    <Route path='signup' element = {<Signup/>}/>
+    <Route path='dashboard' element = {<Dashboard/>}/>
+  </Routes>
+  </BrowserRouter>
 }
 
 export default App
