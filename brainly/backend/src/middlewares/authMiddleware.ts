@@ -6,7 +6,7 @@ import UserModel from '../model/UserModel';
 
 
 export const authMiddleware = asyncHandler( async (req: Request, res: Response, next: NextFunction) => {
-    const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
+    const token = req.cookies.token || req.headers.authorization;
     if(!token) next(new ErrorResponse("Not authorized to access this route", 401));
     const decoded : any = jwt.verify(token, process.env.JWT_SECRET as string);
     const user = await UserModel.findById(decoded._id).select("-password");
